@@ -14,7 +14,15 @@ describe('Airport', () => {
   })
 
   it('does not land a plane if the weather is stormy', () => {
-    spyOn(airport, 'landPlane').and.throwError("it's too stormy")
-    expect(() => { airport.landPlane(plane) } ).toThrowError("it's too stormy")
+    spyOn(airport, '_checkWeather').and.returnValue('stormy')
+    airport.landPlane(plane)
+    expect(airport.planes).toEqual([])
+  })
+
+  it('does not clear a plane if the weather is stormy', () => {
+    airport.landPlane(plane)
+    spyOn(airport, '_checkWeather').and.returnValue('stormy')
+    airport.clearPlane(plane)
+    expect(airport.planes[0]["name"]).toMatch("planeyMcPlaneFace")
   })
 })

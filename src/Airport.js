@@ -4,14 +4,13 @@ class Airport {
   }
 
   landPlane(plane) {
+    if ( this._checkWeather() == 'stormy') { return "it's too stormy" }
     return this.planes.push(plane)
   }
 
   clearPlane(plane) {
-    const index = this.planes.indexOf(plane)
-    if ( this._checkWeather() != 'stormy') {
-      return this.planes.splice(index, 1)
-    } else { throw("it's too stormy") }
+    if ( this._checkWeather() == 'stormy') { return "it's too stormy" }
+    return this.planes.splice(this.planes.indexOf(plane), 1)
   }
 
   _checkWeather() {
