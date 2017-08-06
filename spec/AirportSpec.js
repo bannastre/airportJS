@@ -1,8 +1,9 @@
-const airport = new Airport
+const planes = []
+const capacity = 2
+const airport = new Airport(planes, capacity)
 const plane = {name: "planeyMcPlaneFace"}
 
 describe('Airport', () => {
-
   it('can land a plane', () => {
     airport.landPlane(plane)
     expect(airport.planes[0]["name"]).toMatch("planeyMcPlaneFace")
@@ -24,5 +25,9 @@ describe('Airport', () => {
     spyOn(airport, '_checkWeather').and.returnValue('stormy')
     airport.clearPlane(plane)
     expect(airport.planes[0]["name"]).toMatch("planeyMcPlaneFace")
+  })
+
+  it('has a default capacity', () => {
+    expect(airport.capacity).toBe(2)
   })
 })
