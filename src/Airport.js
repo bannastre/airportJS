@@ -8,7 +8,13 @@ class Airport {
   }
 
   clearPlane(plane) {
-    var index = this.planes.indexOf(plane)
-    return this.planes.splice(index, 1)
+    const index = this.planes.indexOf(plane)
+    if ( this._checkWeather() != 'stormy') {
+      return this.planes.splice(index, 1)
+    } else { throw("it's too stormy") }
+  }
+
+  _checkWeather() {
+    return weather.state
   }
 }
