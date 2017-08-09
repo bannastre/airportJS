@@ -1,9 +1,10 @@
 class Weather {
-  constructor() {
-    this.state = 'fair'
+
+  state() {
+    return ((this.generator() > 50) ? 'stormy' : 'fair')
   }
 
-  switch() {
-    this.state = 'stormy'
+  generator() {
+    return Math.floor((Math.random() * 100))
   }
 }
