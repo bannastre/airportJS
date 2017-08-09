@@ -6,6 +6,7 @@ class Airport {
 
   landPlane(plane) {
     if ( this._checkWeather() == 'stormy') { return "it's too stormy" }
+    if ( this._checkCapacity() ) { return "Airport at capacity" }
     return this.planes.push(plane)
   }
 
@@ -16,5 +17,9 @@ class Airport {
 
   _checkWeather() {
     return weather.state
+  }
+
+  _checkCapacity() {
+    return this.planes.length == this.capacity
   }
 }

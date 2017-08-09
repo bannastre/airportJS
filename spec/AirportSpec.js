@@ -6,7 +6,7 @@ const plane = {name: "planeyMcPlaneFace"}
 describe('Airport', () => {
   it('can land a plane', () => {
     airport.landPlane(plane)
-    expect(airport.planes[0]["name"]).toMatch("planeyMcPlaneFace")
+    expect(airport.planes[0]).toBe(plane)
   })
 
   it('can clear a plane for take-off', () => {
@@ -24,10 +24,16 @@ describe('Airport', () => {
     airport.landPlane(plane)
     spyOn(airport, '_checkWeather').and.returnValue('stormy')
     airport.clearPlane(plane)
-    expect(airport.planes[0]["name"]).toMatch("planeyMcPlaneFace")
+    expect(airport.planes[0]).toBe(plane)
   })
 
   it('has a default capacity', () => {
     expect(airport.capacity).toBe(2)
+  })
+
+  it('does not allow a plane to land when at capacity', () => {
+    airport.landPlane(plane)
+    airport.landPlane(plane)
+    expect(airport.planes[2]).toBeUndefined()
   })
 })
