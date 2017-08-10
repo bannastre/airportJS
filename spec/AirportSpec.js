@@ -1,7 +1,6 @@
 const planes = []
 const capacity = 2
 const airport = new Airport(planes, capacity)
-const plane = {name: "planeyMcPlaneFace"}
 
 describe('Airport', () => {
   it('can land a plane', () => {
