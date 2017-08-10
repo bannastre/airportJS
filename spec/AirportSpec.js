@@ -35,4 +35,10 @@ describe('Airport', () => {
     airport.landPlane(plane)
     expect(airport.planes[2]).toBeUndefined()
   })
+
+  it('can update capacity', () => {
+    airport.updateCapacity(20)
+    airport.landPlane(plane)
+    expect(airport.planes[2]).toBe(plane)
+  })
 })

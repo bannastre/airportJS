@@ -15,6 +15,10 @@ class Airport {
     return this.planes.splice(this.planes.indexOf(plane), 1)
   }
 
+  updateCapacity(newCapacity) {
+    return this.capacity = newCapacity
+  }
+
   _checkWeather() {
     return weather.state
   }
